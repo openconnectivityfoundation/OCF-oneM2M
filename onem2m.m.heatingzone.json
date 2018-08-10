@@ -1,0 +1,44 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.heatingzone.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Heating Zone",
+  "definitions": {
+    "onem2m.m.heatingzone": {
+      "type": "object",
+      "properties": {
+        "heatingLevel": {
+          "type": "integer",
+          "description": "The current heating level of the zone. The value range is from 0 (indicating that the zone is not heating) up to the maxHeatingLevel",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.heatingzone",
+            "x-to-ocf": [
+              "oic.r.heatingzone.heatinglevel = heatingLevel"
+            ],
+            "x-from-ocf": [
+              "heatingLevel = oic.r.heatingzone.heatinglevel"
+            ]
+          }
+        },
+        "maxHeatingLevel": {
+          "type": "integer",
+          "description": "The maximum value allowed for the heating level of the zone",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.heatingzone",              
+            "x-to-ocf": [
+              "oic.r.heatingzone.maxheatinglevel = maxHeatingLevel"
+            ],
+            "x-from-ocf": [
+              "maxHeatingLevel = oic.r.heatingzone.maxheatinglevel"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.heatingzone"}
+  ],
+  "required": [ "heatingLevel", "maxHeatingLevel" ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.pushbutton.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Push Button",
+  "definitions": {
+    "onem2m.m.pushbutton": {
+      "type": "object",
+      "properties": {
+        "pushed": {
+          "type": "boolean",
+          "description": "This data point indicates the press of the button.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.button",              
+            "x-to-ocf": [
+              "oic.r.button.value = pushed"
+            ],
+            "x-from-ocf": [
+              "pushed = oic.r.button.value"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [{
+    "$ref": "#/definitions/onem2m.m.pushbutton"
+  }],
+  "required": ["pushed"]
+}

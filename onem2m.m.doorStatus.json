@@ -1,0 +1,65 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.doorStatus.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Door Status",
+  "definitions": {
+    "onem2m.m.doorStatus": {
+      "type": "object",
+      "properties": {
+        "doorState": {
+          "type": "integer",
+          "description": "Current state of the door.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.door",
+            "x-to-ocf": [
+              "if doorState == 1",
+                 "oic.r.door.openState = \"Closed\"",
+              "if doorState == 2",
+                 "oic.r.door.openState = \"Open\""
+            ],
+            "x-from-ocf": [
+              "if oic.r.door.openState = \"Closed\"",
+                 "doorState == 1",
+              "if oic.r.door.openState = \"Open\"",
+                 "doorState == 2"
+            ]
+          }
+        },
+        "openDuration": {
+          "type": "string",
+          "description": "The time duration the door has been open.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.door",
+            "x-to-ocf": [
+              "Conversion from oneM2M timestamp is not yet defined",
+              "oic.r.door.openDuration = openDuration"
+            ],
+            "x-from-ocf": [
+              "Conversion from oneM2M timestamp is not yet defined",
+              "openDuration = oic.r.door.openDuration"
+            ]
+          }
+        },
+        "openAlarm": {
+          "type": "boolean",
+          "description": "The state of the door open alarm. 'True' indicates that the open alarm is active. 'False' indicates that the open alarm is not active.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.door",
+            "x-to-ocf": [
+              "oic.r.door.openAlarm = openAlarm"
+            ],
+            "x-from-ocf": [
+              "openAlarm = oic.r.door.openAlarm"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.doorStatus"}
+  ],
+  "required": [ "doorState" ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.refrigeration.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Refrigeration",
+  "definitions": {
+    "onem2m.m.refrigeration": {
+      "type": "object",
+      "properties": {
+        "rapidFreeze": {
+          "type": "boolean",
+          "description": "Controls the rapid freeze capability. “True” indicates active, “False” indicates inactive.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.refrigeration",              
+            "x-to-ocf": [
+              "oic.r.refrigeration.rapidFreeze = rapidFreeze"
+            ],
+            "x-from-ocf": [
+              "rapidFreeze = oic.r.refrigeration.rapidFreeze"
+            ]
+          }
+        },
+        "rapidCool": {
+          "type": "boolean",
+          "description": "Controls the rapid cool capability. “True” indicates active, “False” indicates inactive.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.refrigeration",              
+            "x-to-ocf": [
+              "oic.r.refrigeration.rapidCool = rapidCool"
+            ],
+            "x-from-ocf": [
+              "rapidCool = oic.r.refrigeration.rapidCool"
+            ]
+          }
+        },
+        "defrost": {
+          "type": "boolean",
+          "description": "Controls the defrost cycle. “True” indicates active, “False” indicates inactive.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.refrigeration",              
+            "x-to-ocf": [
+              "oic.r.refrigeration.defrost = defrost"
+            ],
+            "x-from-ocf": [
+              "defrost = oic.r.refrigeration.defrost"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.refrigeration"}
+  ],
+  "required": [ ]
+}

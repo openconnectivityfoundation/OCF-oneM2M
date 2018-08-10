@@ -1,0 +1,70 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.openlevel.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Open Level",
+  "definitions": {
+    "onem2m.m.openlevel": {
+      "type": "object",
+      "properties": {
+        "openLevel": {
+          "type": "integer",
+          "description": "The rounded percentage of the current open level of entity in the range of [0, 100]. 0 percentage shall mean the entity is closed.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.openlevel",              
+            "x-to-ocf": [
+              "oic.r.openlevel.openLevel = openLevel"
+            ],
+            "x-from-ocf": [
+              "openLevel = oic.r.openlevel.openLevel"
+            ]
+          }
+        },
+        "stepValue": {
+          "type": "integer",
+          "description": "The step value used by the “open” and “close” actions.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.openlevel",              
+            "x-to-ocf": [
+              "oic.r.openlevel.increment = stepValue"
+            ],
+            "x-from-ocf": [
+              "stepValue = oic.r.openlevel.increment"
+            ]
+          }
+        },
+        "minLevel": {
+          "type": "integer",
+          "description": "The minimum value allowed for the “openLevel” status. The default value is 0, which means fully closed.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.openlevel",              
+            "x-to-ocf": [
+              "oic.r.openlevel.range[0] = minLevel"
+            ],
+            "x-from-ocf": [
+              "minLevel = oic.r.openlevel.range[0]"
+            ]
+          }
+        },
+        "maxLevel": {
+          "type": "integer",
+          "description": "The maximum value allowed for the “openLevel” status. The default value is 100, which means fully opened.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.openlevel",              
+            "x-to-ocf": [
+              "oic.r.openlevel.range[1] = maxLevel"
+            ],
+            "x-from-ocf": [
+              "maxLevel = oic.r.openlevel.range[1]"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.openlevel"}
+  ],
+  "required": [ "openLevel" ]
+}
