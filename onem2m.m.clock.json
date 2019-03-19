@@ -1,0 +1,59 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.clock.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Clock",
+  "definitions": {
+    "onem2m.m.clock": {
+      "type": "object",
+      "properties": {
+        "currentTime": {
+          "type": "string",
+          "description": "Information of the current time.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.clock",
+            "x-to-ocf": [
+              "bytecpy ( oic.r.clock.datetime + \"timepos\", currentTime, \"timelen\" );"
+            ],
+            "x-from-ocf": [
+              "bytecpy ( currentTime, oic.r.clock.datetime + \"timepos\", \"timelen\" );"
+            ]
+          }
+        },
+        "currentDate": {
+          "type": "string",
+          "description": "Information of the current time.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.clock",
+            "x-to-ocf": [
+              "bytecpy ( oic.r.clock.datetime + \"datepos\", currentDate, \"datelen\" );"
+            ],
+            "x-from-ocf": [
+              "bytecpy ( currentDate, oic.r.clock.datetime + \"datepos\", \"datelen\" );"
+            ]
+          }
+        },
+        "currentTimeZone": {
+          "type": "string",
+          "description": "Name of current time zone according to the IANA Timezone data format (TZ) (https://www.iana.org/time-zones).",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.clock",
+            "x-to-ocf": [
+              "Convert IANA formatted currentTimeZone to oic.r.clock.datetime timezone offset location using library call",
+              "tx_convert ( oic.r.clock.datetime + \"tzpos\", currentTimeZone );"
+            ],
+            "x-from-ocf": [
+              "Convert oic.r.clock.datetime timezone offset location in IANA formatted currentTimeZone using library call",
+              "tz_convert ( currentTimeZone, oic.r.clock.datetime + \"tzpos\" );"
+            ]
+          }
+        } 
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.clock"}
+  ],
+  "required": [ "currentTime", "currentDate" ]
+}

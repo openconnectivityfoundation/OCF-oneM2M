@@ -1,0 +1,31 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.operationmode.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Operation Mode",
+  "definitions": {
+    "onem2m.m.operationmode": {
+      "type": "object",
+      "properties": {
+        "startPause": {
+          "type": "boolean",
+          "description": "True triggers an operation, and False pauses the operation.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
+              "oic.r.switch.binary.value = startPause"
+            ],
+            "x-from-ocf": [
+              "startPause = oic.r.switch.binary.value"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.operationmode"}
+  ],
+  "required": [ "startPause" ]
+}

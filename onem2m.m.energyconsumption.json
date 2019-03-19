@@ -1,0 +1,122 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.energyconsumption#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Energy Consumption",
+  "definitions": {
+    "onem2m.m.energyconsumption": {
+      "type": "object",
+      "properties": {
+        "Power": {
+          "type": "number",
+          "description": "The power of the device. The common unit is Watt (W).",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.consumption",
+            "x-to-ocf": [
+              "oic.r.energy.consumption.power = Power;"
+            ],
+            "x-from-ocf": [
+              "Power = oic.r.energy.consumption.power"
+            ]
+          }
+        },
+        "absoluteEnergyConsumption": {
+          "type": "number",
+          "description": "The absolute energy consumption, reflecting the real measurement of accumulative energy. The common unit is Watt-hour (Wh).",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.consumption",
+            "x-to-ocf": [
+              "oic.r.energy.consumption.energy = absoluteEnergyConsumption"
+            ],
+            "x-from-ocf": [
+              "absoluteEnergyConsumption = oic.r.energy.consumption.energy"
+            ]
+          }
+        },
+        "roundingEnergyConsumption": {
+          "type": "number",
+          "description": "This energy consumption data can be calculated by using significantDigits and multiplyingFactors.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.consumption",
+            "x-to-ocf": [
+              "This is not needed in OCF as only the absolute energy consumption is tracked."
+            ],
+            "x-from-ocf": [
+              "roundingEnergyConsumption = oic.r.energy.consumption.energy"
+            ]
+          }
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "The number of effective digits for data.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.consumption",
+            "x-to-ocf": [
+              "This is not needed in OCF as only the absolute energy consumption is tracked."
+            ],
+            "x-from-ocf": [
+              "significantDigits = 0"
+            ]
+          }
+        },
+        "multiplyingFactors": {
+          "type": "integer",
+          "description": "The unit for data (multiplying factors)., e.g. 1 kWh, 0,1 kWh, 0,01 kWh etc.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.consumption",
+            "x-to-ocf": [
+              "This is not needed in OCF as only the absolute energy consumption is tracked."
+            ],
+            "x-from-ocf": [
+              "multiplyingFactors = 1"
+            ]
+          }
+        },
+        "voltage": {
+          "type": "number",
+          "description": "The voltage of the device. The common unit is volts (V).",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.electrical",
+            "x-to-ocf": [
+              "oic.r.energy.electrical.voltage = voltage"
+            ],
+            "x-from-ocf": [
+              "voltage = oic.r.energy.electrical.voltage"
+            ]
+          }
+        },
+        "current": {
+          "type": "number",
+          "description": "The current of the device. The common unit is ampere (A).",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.electrical",
+            "x-to-ocf": [
+              "oic.r.energy.electrical.current = current"
+            ],
+            "x-from-ocf": [
+              "current = oic.r.energy.electrical.current"
+            ]
+          }
+        },
+        "frequency": {
+          "type": "number",
+          "description": "The frequency of the device. The common unit is hertz (H).",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.electrical",
+            "x-to-ocf": [
+              "oic.r.energy.electrical.frequency = frequency"
+            ],
+            "x-from-ocf": [
+              "frequency = oic.r.energy.electrical.frequency"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.energyconsumption"}
+  ],
+  "required": [ "Power" ]
+}

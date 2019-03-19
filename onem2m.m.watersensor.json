@@ -1,0 +1,31 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.watersensor.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Water Sensor",
+  "definitions": {
+    "onem2m.m.watersensor": {
+      "type": "object",
+      "properties": {
+        "alarm": {
+          "type": "boolean",
+          "description": "The detection of water. The alarm is indicated as follows: \"True\" indicates that water has been detected, \"False\" indicates a normal status, that means that water is not detected.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.sensor.water",
+            "x-to-ocf": [
+              "oic.r.sensor.water.value = alarm"
+            ],
+            "x-from-ocf": [
+              "alarm = oic.r.sensor.water.value"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.watersensor"}
+  ],
+  "required": [ "alarm" ]
+}

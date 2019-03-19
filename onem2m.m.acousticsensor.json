@@ -1,0 +1,44 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.acousticsensor.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Acoustic Sensor",
+  "definitions": {
+    "onem2m.m.acousticsensor": {
+      "type": "object",
+      "properties": {
+        "loudness": {
+          "type": "number",
+          "description": "The common unit of the sound pressure in dBa.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.soundpressure",
+            "x-to-ocf": [
+              "oic.r.soundpressure.dba = loudness"
+            ],
+            "x-from-ocf": [
+              "loudness = oic.r.soundpressure.dba"
+            ]
+          }
+        },
+        "acousticStatus": {
+          "type": "integer",
+          "description": "The rounded percentage of the current sound pressure as compared to the sensitivity range of the sensor. The acousticStatus indicates as follows: (0) No sound ~ (100) Most noisy.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.soundpressure",
+            "x-to-ocf": [
+              "oic.r.soundpressure.percentage = acousticStatus"
+            ],
+            "x-from-ocf": [
+              "acousticStatus = oic.r.soundpressure.percentage"
+           ]
+          }
+        } 
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.acousticsensor"}
+  ],
+  "required": [ "loudness" ]
+}

@@ -1,0 +1,72 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.robotcleanerjobmode.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Robot Cleaner Job Mode",
+  "definitions": {
+    "onem2m.m.robotcleanerjobmode": {
+      "type": "object",
+      "properties": {
+        "currentJobMode": {
+          "type": "integer",
+          "description": "Currently active job mode.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operational.state",
+            "x-to-ocf": [
+              "Need to translate between the oneM2M integer value and the OCF operational state enumerated string",
+              "if ( currentJobMode == 1 ) { oic.r.operational.state.currentJobState == \"zigzag\"; }",
+              "if ( currentJobMode == 2 ) { oic.r.operational.state.currentJobState == \"sectored\"; }",
+              "if ( currentJobMode == 3 ) { oic.r.operational.state.currentJobState == \"spot\"; }",
+              "else { oic.r.operational.state.currentJobState == \"unknown\"; }"
+            ],
+            "x-from-ocf": [
+              "Need to translate between the OCF operational state enumerated string and the oneM2M integer value",
+              "if (oic.r.operational.state.currentJobState == \"zigzag\" ) { currentJobMode = 1; }",
+              "if (oic.r.operational.state.currentJobState == \"sectored\" ) { currentJobMode = 2; }",
+              "if (oic.r.operational.state.currentJobState == \"spot\" { currentJobMode = 3; }",
+              "else { currentJobMode = 0; }"
+            ]
+          }
+        },
+        "currentJobModeName": {
+          "type": "string",
+          "description": "Name of current job mode in string. This can be used when currentJobMode is vendor-specific.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operational.state",
+            "x-to-ocf": [
+              "This value does not exist in OCF as it is already accommodated in the currentJobMode property."
+            ],
+            "x-from-ocf": [
+              "Need to translate between the OCF operational state enumerated string and the oneM2M string value",
+              "if (oic.r.operational.state.currentJobState == \"zigzag\" ) { currentJobModeName = \"zigzag\"; }",
+              "if (oic.r.operational.state.currentJobState == \"sectored\" ) { currentJobModeName = \"sectorBase\"; }",
+              "if (oic.r.operational.state.currentJobState == \"spot\" { currentJobModeName = \"spot\"; }",
+              "else { currentJobModeName = \"\"; }"
+            ]
+          }
+        },
+        "jobModes": {
+          "type": "array",
+          "description": "List of possible job states the device supports",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operational.state",
+            "x-to-ocf": [
+              "This does not exist in OCF as all possible operational states are available."
+            ],
+            "x-from-ocf": [
+              "This is an array of integers in oneM2M defined by the current version of the specification as follows:",
+              "jobModes[1] = 1",
+              "jobModes[2] = 2",
+              "jobModes[3] = 3"
+           ]
+          }
+        } 
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.airconjobmode"}
+  ],
+  "required": [ "currentJobMode", "jobModes" ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.overcurrentsensor.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Overcurrent Sensor",
+  "definitions": {
+    "onem2m.m.overcurrentsensor": {
+      "type": "object",
+      "properties": {
+        "overcurrentStatus": {
+          "type": "boolean",
+          "description": "The overcurrentStatus indicates as follows: (True) An over-current is detected / (False) Normal status, an over-current is not detected",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.sensor",
+            "x-to-ocf": [
+              "oic.r.sensor.value = overcurrentStatus"
+            ],
+            "x-from-ocf": [
+              "overcurrentStatus = oic.r.sensor.value"
+            ]
+          }
+        },
+        "detectedTime": {
+          "type": "string",
+          "description": "The time the over-current is detected.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.time.period",
+            "x-to-ocf": [
+              "oic.r.time.period.startTime = detectedTime"
+            ],
+            "x-from-ocf": [
+              "detectedTime = oic.r.time.period.startTime"
+            ]
+          }
+        },
+        "duration": {
+          "type": "integer",
+          "description": "The duration the over-current is detected. The unit of duration is ms.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.time.period",
+            "x-to-ocf": [
+              "oic.r.time.period.stoptime = oic.r.time.period.starttime + duration",
+              "An arithmetic conversion will be necessary to go from string plus integer to string"
+            ],
+            "x-from-ocf": [
+              "duration = oic.r.time.period.stoptime - oic.r.time.period.starttime",
+              "An arithmetic conversion will be necessary to go from string to integer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.overcurrentsensor"}
+  ],
+  "required": [ "overcurrentStatus" ]
+}

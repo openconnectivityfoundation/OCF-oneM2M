@@ -1,0 +1,88 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.airpurifierjobmode.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Air Purifier Job Mode",
+  "definitions": {
+    "onem2m.m.airpurifierjobmode": {
+      "type": "object",
+      "properties": {
+        "currentJobMode": {
+          "type": "integer",
+          "description": "Currently active job mode.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operational.state",
+            "x-to-ocf": [
+              "Need to translate between the oneM2M integer value and the OCF operational state enumerated string",
+              "if ( currentJobMode == 1 ) { oic.r.operational.state.currentJobState == \"normal\"; }",
+              "if ( currentJobMode == 2 ) { oic.r.operational.state.currentJobState == \"sleeping\"; }",
+              "if ( currentJobMode == 3 ) { oic.r.operational.state.currentJobState == \"silent\"; }",
+              "if ( currentJobMode == 4 ) { oic.r.operational.state.currentJobState == \"wet\"; }",
+              "if ( currentJobMode == 5 ) { oic.r.operational.state.currentJobState == \"circulating\"; }",
+              "if ( currentJobMode == 6 ) { oic.r.operational.state.currentJobState == \"dual\"; }",
+              "if ( currentJobMode == 7 ) { oic.r.operational.state.currentJobState == \"auto\"; }",
+              "else { oic.r.operational.state.currentJobState == \"unknown\"; }"
+            ],
+            "x-from-ocf": [
+              "Need to translate between the OCF operational state enumerated string and the oneM2M integer value",
+              "if (oic.r.operational.state.currentJobState == \"normal\" ) { currentJobMode = 1; }",
+              "if (oic.r.operational.state.currentJobState == \"sleeping\" ) { currentJobMode = 2; }",
+              "if (oic.r.operational.state.currentJobState == \"silent\" { currentJobMode = 3; }",
+              "if (oic.r.operational.state.currentJobState == \"wet\" ) { currentJobMode = 4; }",
+              "if (oic.r.operational.state.currentJobState == \"circulating\" ) { currentJobMode = 5; }",
+              "if (oic.r.operational.state.currentJobState == \"dual\" ) { currentJobMode = 6; }",
+              "if (oic.r.operational.state.currentJobState == \"auto\" ) { currentJobMode = 7; }",
+              "else { currentJobMode = 0; }"
+            ]
+          }
+        },
+        "currentJobModeName": {
+          "type": "string",
+          "description": "Name of current job mode in string. This can be used when currentJobMode is vendor-specific.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operational.state",
+            "x-to-ocf": [
+              "This value does not exist in OCF as it is already accommodated in the currentJobMode property."
+            ],
+            "x-from-ocf": [
+              "Need to translate between the OCF operational state enumerated string and the oneM2M string value",
+              "if (oic.r.operational.state.currentJobState == \"normal\" ) { currentJobModeName = \"normalClean\"; }",
+              "if (oic.r.operational.state.currentJobState == \"sleeping\" ) { currentJobModeName = \"sleep\"; }",
+              "if (oic.r.operational.state.currentJobState == \"silent\" { currentJobModeName = \"silent\"; }",
+              "if (oic.r.operational.state.currentJobState == \"wet\" ) { currentJobModeName = \"wet\"; }",
+              "if (oic.r.operational.state.currentJobState == \"circulating\" ) { currentJobModeName = \"circulate\"; }",
+              "if (oic.r.operational.state.currentJobState == \"dual\" ) { currentJobModeName = \"dual\"; }",
+              "if (oic.r.operational.state.currentJobState == \"auto\" ) { currentJobModeName = \"auto\"; }",
+              "else { currentJobModeName = \"\"; }"
+            ]
+          }
+        },
+        "jobModes": {
+          "type": "array",
+          "description": "List of possible job states the device supports",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operational.state",
+            "x-to-ocf": [
+              "This does not exist in OCF as all possible operational states are available."
+            ],
+            "x-from-ocf": [
+              "This is an array of integers in oneM2M defined by the current version of the specification as follows:",
+              "jobModes[1] = 1",
+              "jobModes[2] = 2",
+              "jobModes[3] = 3",
+              "jobModes[4] = 4",
+              "jobModes[5] = 5",
+              "jobModes[6] = 6",
+              "jobModes[7] = 7"
+           ]
+          }
+        } 
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.airconjobmode"}
+  ],
+  "required": [ "currentJobMode", "jobModes" ]
+}

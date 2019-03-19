@@ -1,0 +1,57 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.electricvehicleconnector#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Electric Vehicle Connector",
+  "definitions": {
+    "onem2m.m.electricvehicleconnector": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "description": "The status of connection.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.vehicle.connector",
+            "x-to-ocf": [
+              "oic.r.vehicle.connector.status = status;"
+            ],
+            "x-from-ocf": [
+              "status = oic.r.vehicle.connector.status"
+            ]
+          }
+        },
+        "propChargingCapacity": {
+          "type": "integer",
+          "description": "Rated charging capacity in milli-Amps.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.vehicle.connector",
+            "x-to-ocf": [
+              "oic.r.vehicle.connector.ratedchargingcapacity = propChargingCapacity * 1000"
+            ],
+            "x-from-ocf": [
+              "propChargingCapacity = oic.r.vehicle.connector.ratedchargingcapacity / 1000"
+            ]
+          }
+        },
+        "propDischargingCapacity": {
+          "type": "integer",
+          "description": "Rated discharging capacity in milli-Amps.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.vehicle.connector",
+            "x-to-ocf": [
+              "oic.r.vehicle.connector.rateddischargingcapacity = propDischargingCapacity * 1000"
+            ],
+            "x-from-ocf": [
+              "propDischargingCapacity = oic.r.vehicle.connector.rateddischargingcapacity / 1000"
+            ]
+          }
+        } 
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.electricvehicleconnector"}
+  ],
+  "required": [ "status" ]
+}

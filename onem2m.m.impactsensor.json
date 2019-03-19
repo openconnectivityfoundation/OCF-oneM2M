@@ -1,0 +1,70 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.impactsensor.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Impact Sensor",
+  "definitions": {
+    "onem2m.m.impactsensor": {
+      "type": "object",
+      "properties": {
+        "impactStatus": {
+          "type": "boolean",
+          "description": "The impactStatus indicates as follows: (True) A physical impact is detected / (False) Normal status, an impact is not detected",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.impactsensor",
+            "x-to-ocf": [
+              "oic.r.impactsensor.impactstatus = impactStatus"
+            ],
+            "x-from-ocf": [
+              "impactStatus = oic.r.impactsensor.impactstatus"
+            ]
+          }
+        },
+        "impactLevel": {
+          "type": "number",
+          "description": "The impactLevel provides the level of impact which unit is \"G\" (G-force).",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.impactsensor",
+            "x-to-ocf": [
+              "oic.r.impactsensor.impactlevel = impactLevel"
+            ],
+            "x-from-ocf": [
+              "impactLevel= oic.r.impactsensor.impactlevel"
+           ]
+          }
+        }, 
+        "impactDirectionHorizontal": {
+          "type": "number",
+          "description": "The impactDirectionHorizontal shows a horizontal direction where the impact comes from. The value is 0 to 360 degrees. 0 is the front of the sensor and clockwise increment.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.impactsensor",
+            "x-to-ocf": [
+              "oic.r.impactsensor.impactdirectionhorizontal = impactDirectionHorizontal"
+            ],
+            "x-from-ocf": [
+              "impactDirectionHorozintal = oic.r.impactsensor.impactdirectionhorizontal"
+           ]
+          }
+        }, 
+        "impactDirectionVertical": {
+          "type": "number",
+          "description": "The impactDirectionVertical shows a vertical direction where the impact comes from. The value is 0 to 360 degrees. 0 is the front of the sensor and upward increment.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.impactsensor",
+            "x-to-ocf": [
+              "oic.r.impactsensor.impactdirectionvertical = impactDirectionVertical"
+            ],
+            "x-from-ocf": [
+              "impactDirectionVertical = oic.r.impactsensor.impactdirectionvertical"
+           ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.impactsensor"}
+  ],
+  "required": [ "impactstatus" ]
+}

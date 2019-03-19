@@ -1,0 +1,46 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.autodocumentfeeder.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Auto Document Feeder",
+  "definitions": {
+    "onem2m.m.autodocumentfeeder": {
+      "type": "object",
+      "properties": {
+        "currentAdfState": {
+          "type": "integer",
+          "description": "Currently active adf(auto document feeder) state.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operational.state",
+            "x-to-ocf": [
+              "oic.r.operational.state.jobState = currentAdfState"
+            ],
+            "x-from-ocf": [
+              "currentAdfState = oic.r.operational.state.jobState"
+            ]
+          }
+        },
+        "adfStates": {
+          "type": "array",
+          "description": "List of possible adf states the device supports",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operational.state",
+            "x-to-ocf": [
+              "This is an array of strings in OCF and an array of integers in oneM2M. For each element in the source array, do the assignment into the same position in the destination array.",
+              "oic.r.operational.state.jobStates[i] = adfStates[i]"
+            ],
+            "x-from-ocf": [
+              "This is an array of strings in OCF and an array of integers in oneM2M. For each element in the source array, do the assignment into the same position in the destination array.",
+              "adfStates[i] = oic.r.operational.state.jobStates[i]"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.autodocumentfeeder"}
+  ],
+  "required": [ "currentAdfState","adfStates" ]
+}

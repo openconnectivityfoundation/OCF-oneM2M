@@ -1,0 +1,33 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.liquidremaining.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Liquid Remaining",
+  "definitions": {
+    "onem2m.m.liquidremaining": {
+      "type": "object",
+      "properties": {
+        "liquidRemaining": {
+          "type": "integer",
+          "description": "The remaining level of liquid",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.liquid.level",
+            "x-to-ocf": [
+              "This value is 0-5 in oneM2M and 0-100 in OCF, so do the arithmetic conversion",
+              "oic.r.liquid.level.currentlevel = liquidRemaining * 20"
+            ],
+            "x-from-ocf": [
+              "This value is 0-5 in oneM2M and 0-100 in OCF, so do the arithmetic conversion",
+              "liquidRemaining = oic.r.liquid.level.currentlevel / 20"
+            ]
+          }
+        } 
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.liquidremaining"}
+  ],
+  "required": [ "liquidRemaining" ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.hotwatersupply.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Hot Water Supply",
+  "definitions": {
+    "onem2m.m.hotwatersupply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "description": "The status of watering operation.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.sensor",
+            "x-to-ocf": [
+              "oic.r.sensor.value = status"
+            ],
+            "x-from-ocf": [
+              "status = oic.r.sensor.value"
+            ]
+          }
+        },
+        "bath": {
+          "type": "boolean",
+          "description": "The status of filling bath tub.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
+              "oic.r.switch.binary.value = bath"
+            ],
+            "x-from-ocf": [
+              "bath = oic.r.switch.binary.value"
+            ]
+          }
+        }  
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.hotwatersupply"}
+  ],
+  "required": [ "status" ]
+}

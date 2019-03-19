@@ -1,0 +1,58 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.filterinfo.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Filter Info",
+  "definitions": {
+    "onem2m.m.filterinfo": {
+      "type": "object",
+      "properties": {
+        "usedTime": {
+          "type": "integer",
+          "description": "Cumulative used time in second of a filter.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.consumable",
+            "x-to-ocf": [
+              "oic.r.consumable.typeofconsumable = \"water filter\"",
+              "oic.r.consumable.usedtime = usedTime"
+            ],
+            "x-from-ocf": [
+              "usedTime = oic.r.consumable.usedtime"
+            ]
+          }
+        },
+        "needsReplacement": {
+          "type": "boolean",
+          "description": "This value indicates that the filter needs to be replaced.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.sensor",
+            "x-to-ocf": [
+              "oic.r.sensor.value = needsReplacement"
+            ],
+            "x-from-ocf": [
+              "needsReplacement = oic.r.sensor.value"
+            ]
+          }
+        },
+        "filterLifetime": {
+          "type": "integer",
+          "description": "Percentage life time remaining for the water filter.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.consumable",
+            "x-to-ocf": [
+              "oic.r.consumable.remaining = filterLifetime"
+            ],
+            "x-from-ocf": [
+              "filterLifetime = oic.r.consumable.remaining"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.filterinfo"}
+  ],
+  "required": [ "usedTime" ]
+}

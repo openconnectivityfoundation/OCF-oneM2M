@@ -1,0 +1,31 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.powersave.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Power Save",
+  "definitions": {
+    "onem2m.m.powersave": {
+      "type": "object",
+      "properties": {
+        "powerSaveEnabled": {
+          "type": "boolean",
+          "description": "The current status of the Power Saving Mode. True indicates enabled, and false indicates not enabled.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
+              "oic.r.switch.binary.value = powerSaveEnabled"
+            ],
+            "x-from-ocf": [
+              "powerSaveEnabled = oic.r.switch.binary.value"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.powersave"}
+  ],
+  "required": [ "powerSaveEnabled" ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.liquidlevel.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Liquid Level",
+  "definitions": {
+    "onem2m.m.liquidlevel": {
+      "type": "object",
+      "properties": {
+        "liquidLevel": {
+          "type": "integer",
+          "description": "The desired level of liquid",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.liquid.level",
+            "x-to-ocf": [
+              "oic.r.liquid.level.desiredlevel = liquidLevel * 20"
+            ],
+            "x-from-ocf": [
+              "liquidLevel = oic.r.liquid.level.desiredlevel / 20"
+            ]
+          }
+        } 
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.liquidlevel"}
+  ],
+  "required": [ "liquidlevel" ]
+}

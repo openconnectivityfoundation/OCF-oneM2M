@@ -1,0 +1,170 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.airqualitysensor.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Air Quality Sensor",
+  "definitions": {
+    "onem2m.m.airqualitysensor": {
+      "type": "object",
+      "properties": {
+        "sensorPM1": {
+          "type": "integer",
+          "description": "Concentration of Particle Matter under 1um. Minimum value is 0, and maximum is 1000.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "oic.r.airquality.contaminantvalue = sensorPM1",
+              "oic.r.airquality.contaminanttype = \"PM1\"",
+              "oic.r.airquality.valuetype = \"Measured\""
+            ],
+            "x-from-ocf": [
+              "sensorPM1 = oic.r.airquality.contaminantvalue"
+            ]
+          }
+        },
+        "sensorPM2": {
+          "type": "integer",
+          "description": "Concentration of Particle Matter under 2.5um. Minimum value is 0, and maximum is 1000.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "oic.r.airquality.contaminantvalue = sensorPM2",
+              "oic.r.airquality.contaminanttype = \"PM2.5\"",
+              "oic.r.airquality.valuetype = \"Measured\""
+            ],
+            "x-from-ocf": [
+              "sensorPM2 = oic.r.airquality.contaminantvalue"
+            ]
+          }
+        },
+        "sensorPM10": {
+          "type": "integer",
+          "description": "Concentration of Particle Matter under 10um. Minimum value is 0, and maximum is 1000.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "oic.r.airquality.contaminantvalue = sensorPM10",
+              "oic.r.airquality.contaminanttype = \"PM10\"",
+              "oic.r.airquality.valuetype = \"Measured\""
+            ],
+            "x-from-ocf": [
+              "sensorPM10 = oic.r.airquality.contaminantvalue"
+            ]
+          }
+        },
+        "sensorOdor": {
+          "type": "integer",
+          "description": "Concentration of odor that reflects air pollution. Minimum value is 0, and maximum is 1000.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "oic.r.airquality.contaminantvalue = sensorOdor",
+              "oic.r.airquality.contaminanttype = \"Odor\"",
+              "oic.r.airquality.valuetype = \"Measured\""
+            ],
+            "x-from-ocf": [
+              "sensorOdor = oic.r.airquality.contaminantvalue"
+            ]
+          }
+        },
+        "sensorHumidity": {
+          "type": "integer",
+          "description": "Measured humidity. Minimum value is 0, and maximum is 100.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.humidity",
+            "x-to-ocf": [
+              "oic.r.humidity.humidity = sensorHumidity"
+            ],
+            "x-from-ocf": [
+              "sensorHumidity = oic.r.humidity.humidity"
+            ]
+          }
+        },
+        "monitoringEnabled": {
+          "type": "boolean",
+          "description": "1 allows monitoring this resource whereas 0 does not.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
+              "if monitoringEnabled == 0",
+                 "oic.r.switch.binary.value = false",
+              "if monitoringEnabled == 1",
+                 "oic.r.switch.binary.value = true"
+            ],
+            "x-from-ocf": [
+              "if oic.r.switch.binary.value == false",
+                 "monitoringEnabled = 0",
+              "if oic.r.switch.binary.value == true",
+                 "monitoringEnabled = 1"
+            ]
+          }
+        },
+        "CO2": {
+          "type": "integer",
+          "description": "This value indicates CO2 in ppm (parts per million)",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "oic.r.airquality.contaminantvalue = CO2",
+              "oic.r.airquality.contaminanttype = \"CO2\"",
+              "oic.r.airquality.valuetype = \"Measured\""
+            ],
+            "x-from-ocf": [
+              "CO2 = oic.r.airquality.contaminantvalue"
+            ]
+          }
+        },
+        "CO": {
+          "type": "integer",
+          "description": "This value indicates CO in ppm (parts per million)",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "oic.r.airquality.contaminantvalue = CO",
+              "oic.r.airquality.contaminanttype = \"CO\"",
+              "oic.r.airquality.valuetype = \"Measured\""
+            ],
+            "x-from-ocf": [
+              "CO = oic.r.airquality.contaminantvalue"
+            ]
+          }
+        },
+        "CH2O": {
+          "type": "integer",
+          "description": "This value indicates CH2O in ppm (parts per million)",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "oic.r.airquality.contaminantvalue = CH2O",
+              "oic.r.airquality.contaminanttype = \"CH2O\"",
+              "oic.r.airquality.valuetype = \"Measured\""
+            ],
+            "x-from-ocf": [
+              "CH2O = oic.r.airquality.contaminantvalue"
+            ]
+          }
+        },
+        "VOC": {
+          "type": "integer",
+          "description": "This value indicates VOC (Volatile Organic Compounds) in ppm (parts per million)",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "oic.r.airquality.contaminantvalue = VOC",
+              "oic.r.airquality.contaminanttype = \"VOC\"",
+              "oic.r.airquality.valuetype = \"Measured\""
+            ],
+            "x-from-ocf": [
+              "VOC = oic.r.airquality.contaminantvalue"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.airqualitysensor"}
+  ],
+  "required": [ ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.energygeneration#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Energy Generation",
+  "definitions": {
+    "onem2m.m.energygeneration": {
+      "type": "object",
+      "properties": {
+        "powerGenerationData": {
+          "type": "number",
+          "description": "Amount of instantaneous generation data.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.generation",
+            "x-to-ocf": [
+              "oic.r.energy.generation.energygenerated = powerGenerationData;"
+            ],
+            "x-from-ocf": [
+              "powerGenerationData = oic.r.energy.generation.energygenerated"
+            ]
+          }
+        },
+        "roundingEnergyGeneration": {
+          "type": "integer",
+          "description": "This energy generation data can be calculated by using significantFigures and multiplyingFactors.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.generation",
+            "x-to-ocf": [
+              "This is not needed in OCF as only the absolute energy consumption is tracked."
+            ],
+            "x-from-ocf": [
+              "roundingEnergyConsumption = oic.r.energy.consumption.powerGenerationData"
+            ]
+          }
+        },
+        "significantDigits": {
+          "type": "integer",
+          "description": "The number of effective digits for data.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.generation",
+            "x-to-ocf": [
+              "This is not needed in OCF as only the absolute energy consumption is tracked."
+            ],
+            "x-from-ocf": [
+              "significantDigits = 0"
+            ]
+          }
+        },
+        "multiplyingFactors": {
+          "type": "number",
+          "description": "The unit for data (multiplying factors)., e.g. 1 kWh, 0,1 kWh, 0,01 kWh etc.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.energy.generation",
+            "x-to-ocf": [
+              "This is not needed in OCF as only the absolute energy consumption is tracked."
+            ],
+            "x-from-ocf": [
+              "multiplyingFactors = 1"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.energygeneration"}
+  ],
+  "required": [ ]
+}

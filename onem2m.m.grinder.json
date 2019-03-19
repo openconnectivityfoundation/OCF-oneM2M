@@ -1,0 +1,57 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.grinder.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Grinder",
+  "definitions": {
+    "onem2m.m.grinder": {
+      "type": "object",
+      "properties": {
+        "useGrinder": {
+          "type": "boolean",
+          "description": "The current status of the grinder enablement. True indicates enabled, and False indicates not enabled.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
+              "oic.r.switch.binary.value = foamingStrength"
+            ],
+            "x-from-ocf": [
+              "foamingStrength = oic.r.switch.binary.value"
+            ]
+          }
+        },  
+        "coarseness": {
+          "type": "integer",
+          "description": "The wished coarseness of the solid supplies e.g. coffee beans, after grinding.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.grinder",
+            "x-to-ocf": [
+              "oic.r.grinder.coarseness = coarseness"
+            ],
+            "x-from-ocf": [
+              "coarseness = oic.r.grinder.coarseness"
+            ]
+          }
+        },
+        "grainsRemaining": {
+          "type": "integer",
+          "description": "The level of remaining grains in a machine having a grinder e.g. remaining coffee beans in the coffee machine grinder.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.grinder",
+            "x-to-ocf": [
+              "oic.r.grinder.remaining = remaining / 20"
+            ],
+            "x-from-ocf": [
+              "remaining = oic.r.grinder.remaining * 20"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.grinder"}
+  ],
+  "required": [ "useGrinder" ]
+}

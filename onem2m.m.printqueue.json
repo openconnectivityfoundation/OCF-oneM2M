@@ -1,0 +1,48 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.printqueue.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Print Queue",
+  "definitions": {
+    "onem2m.m.printqueue": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "description": "The URI of the printing file.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.printer.queue",
+            "x-to-ocf": [
+              "For each item in the array of queue items from onem2m.m.printqueue",
+                "oic.r.print.queueitem[i].uri = uri[i]"
+            ],
+            "x-from-ocf": [
+              "For each item in the array of queue items from oic.r.printer.queue",
+                "uri[i] = oic.r.print.queueitem[i].uri"
+            ]
+          }
+        },
+        "printingState": {
+          "type": "string",
+          "description": "The printingState is indicating the status of the printing file.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.printer.queue",
+            "x-to-ocf": [
+              "For each item in the array of queue items from onem2m.m.printqueue",
+                "oic.r.print.queueitem[i].status = printingStatus[i]"
+            ],
+            "x-from-ocf": [
+              "For each item in the array of queue items from oic.r.printer.queue",
+                "printingStatus[i] = oic.r.print.queueitem[i].status"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.printqueue"}
+  ],
+  "required": [ "uri", "printingState" ]
+}

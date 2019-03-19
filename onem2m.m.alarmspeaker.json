@@ -1,0 +1,57 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.alarmspeaker.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Alarm Speaker",
+  "definitions": {
+    "onem2m.m.alarmspeaker": {
+      "type": "object",
+      "properties": {
+        "tone": {
+          "type": "integer",
+          "description": "Representing the tones of the alarm",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.audiovolume",
+            "x-to-ocf": [
+              "oic.r.audio.volume = tone * 20"
+            ],
+            "x-from-ocf": [
+              "tone = oic.r.audio.volume / 20"
+            ]
+          }
+        },
+        "Light": {
+          "type": "integer",
+          "description": "Representing the lighting mode of the alarm.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.light.dimming",
+            "x-to-ocf": [
+              "oic.r.light.dimming = Light"
+            ],
+            "x-from-ocf": [
+              "Light = oic.r.light.dimming"
+            ]
+          }
+        },
+        "alarmStatus": {
+          "type": "boolean",
+          "description": "true indicates the alarm start while false indicates the alarm stop.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
+              "oic.r.switch.binary.value = alarmStatus"
+            ],
+            "x-from-ocf": [
+              "alarmStatus = oic.r.switch.binary.value"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.airqualitysensor"}
+  ],
+  "required": [ "alarmStatus" ]
+}

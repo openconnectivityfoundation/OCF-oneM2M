@@ -1,0 +1,31 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.foaming.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Foaming",
+  "definitions": {
+    "onem2m.m.foaming": {
+      "type": "object",
+      "properties": {
+        "foamingStrength": {
+          "type": "integer",
+          "description": "The current strength of foamed milk. A higher value indicates a milk which is more foamed.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.foaming",
+            "x-to-ocf": [
+              "oic.r.foaming.foamstrength = foamingStrength"
+            ],
+            "x-from-ocf": [
+              "foamingStrength = oic.r.foaming.foamstrength"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.foaming"}
+  ],
+  "required": [ "foamingStrength" ]
+}

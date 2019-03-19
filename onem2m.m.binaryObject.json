@@ -1,0 +1,73 @@
+{
+  "id": "http://openinterconnect.org/onem2mmapping/schemas/onem2m.m.binaryobject.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2018 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Binary Object",
+  "definitions": {
+    "onem2m.m.binaryobject": {
+      "type": "object",
+      "properties": {
+        "object": {
+          "type": "string",
+          "description": "This data point contains the base64 encoded binary object.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.opaquedata",
+            "x-to-ocf": [
+              "oic.r.opaquedata.payload = object",
+              "oic.r.opaquedata.encoding = \"base64\"",
+              "oic.r.opaquedata.system = \"oneM2M\""
+            ],
+            "x-from-ocf": [
+              "If the OCF encoding is not base64, then the payload would need to be converted to base64",
+              "object = oic.r.opaquedata.payload"
+            ]
+          }
+        },
+        "objectType": {
+          "type": "string",
+          "description": "This data point contains the type and subtype of the binary object as a MIME type.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.opaquedata",
+            "x-to-ocf": [
+              "oic.r.opaquedata.payloadtype = objectType"
+            ],
+            "x-from-ocf": [
+              "objectType = oic.r.opaquedata.payloadtype"
+           ]
+          }
+        },
+        "size": {
+          "type": "integer",
+          "description": "The size of the decoded binary object.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.opaquedata",
+            "x-to-ocf": [
+              "oic.r.opaquedata.size = size"
+            ],
+            "x-from-ocf": [
+              "size = oic.r.opaquedata.size"
+           ]
+          }
+        }, 
+        "hash": {
+          "type": "string",
+          "description": "The hash code of the blob. If present, it is used to check the decoded content of the “object” data point for integrity. The algorithm used for generating the hash value is SHA-2 [15]. The data point contains the hash as a hex encoded value.",
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.opaquedata",
+            "x-to-ocf": [
+              "oic.r.opaquedata.hash = hash"
+            ],
+            "x-from-ocf": [
+              "hash = oic.r.opaquedata.hash"
+           ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/onem2m.m.opaquedata"}
+  ],
+  "required": [ "object", "objectType" ]
+}
