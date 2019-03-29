@@ -11,7 +11,7 @@
           "type": "integer",
           "description": "The rounded percentage of the current open level of entity in the range of [0, 100]. 0 percentage shall mean the entity is closed.",
           "x-ocf-conversion": {
-            "x-ocf-alias": "oic.r.openlevel",              
+            "x-ocf-alias": "oic.r.openlevel",
             "x-to-ocf": [
               "oic.r.openlevel.openLevel = openLevel"
             ],
@@ -22,9 +22,9 @@
         },
         "stepValue": {
           "type": "integer",
-          "description": "The step value used by the “open” and “close” actions.",
+          "description": "The step value used by the \"open\" and \"close\" actions.",
           "x-ocf-conversion": {
-            "x-ocf-alias": "oic.r.openlevel",              
+            "x-ocf-alias": "oic.r.openlevel",
             "x-to-ocf": [
               "oic.r.openlevel.increment = stepValue"
             ],
@@ -35,9 +35,9 @@
         },
         "minLevel": {
           "type": "integer",
-          "description": "The minimum value allowed for the “openLevel” status. The default value is 0, which means fully closed.",
+          "description": "The minimum value allowed for the \"openLevel\" status. The default value is 0, which means fully closed.",
           "x-ocf-conversion": {
-            "x-ocf-alias": "oic.r.openlevel",              
+            "x-ocf-alias": "oic.r.openlevel",
             "x-to-ocf": [
               "oic.r.openlevel.range[0] = minLevel"
             ],
@@ -48,9 +48,9 @@
         },
         "maxLevel": {
           "type": "integer",
-          "description": "The maximum value allowed for the “openLevel” status. The default value is 100, which means fully opened.",
+          "description": "The maximum value allowed for the \"openLevel\" status. The default value is 100, which means fully opened.",
           "x-ocf-conversion": {
-            "x-ocf-alias": "oic.r.openlevel",              
+            "x-ocf-alias": "oic.r.openlevel",
             "x-to-ocf": [
               "oic.r.openlevel.range[1] = maxLevel"
             ],

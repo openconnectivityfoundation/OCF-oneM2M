@@ -9,9 +9,9 @@
       "properties": {
         "rapidFreeze": {
           "type": "boolean",
-          "description": "Controls the rapid freeze capability. “True” indicates active, “False” indicates inactive.",
+          "description": "Controls the rapid freeze capability. \"True\" indicates active, \"False\" indicates inactive.",
           "x-ocf-conversion": {
-            "x-ocf-alias": "oic.r.refrigeration",              
+            "x-ocf-alias": "oic.r.refrigeration",
             "x-to-ocf": [
               "oic.r.refrigeration.rapidFreeze = rapidFreeze"
             ],
@@ -22,9 +22,9 @@
         },
         "rapidCool": {
           "type": "boolean",
-          "description": "Controls the rapid cool capability. “True” indicates active, “False” indicates inactive.",
+          "description": "Controls the rapid cool capability. \"True\" indicates active, \"False\" indicates inactive.",
           "x-ocf-conversion": {
-            "x-ocf-alias": "oic.r.refrigeration",              
+            "x-ocf-alias": "oic.r.refrigeration",
             "x-to-ocf": [
               "oic.r.refrigeration.rapidCool = rapidCool"
             ],
@@ -35,9 +35,9 @@
         },
         "defrost": {
           "type": "boolean",
-          "description": "Controls the defrost cycle. “True” indicates active, “False” indicates inactive.",
+          "description": "Controls the defrost cycle. \"True\" indicates active, \"False\" indicates inactive.",
           "x-ocf-conversion": {
-            "x-ocf-alias": "oic.r.refrigeration",              
+            "x-ocf-alias": "oic.r.refrigeration",
             "x-to-ocf": [
               "oic.r.refrigeration.defrost = defrost"
             ],

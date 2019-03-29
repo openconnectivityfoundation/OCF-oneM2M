@@ -48,10 +48,10 @@
               "size = oic.r.opaquedata.size"
            ]
           }
-        }, 
+        },
         "hash": {
           "type": "string",
-          "description": "The hash code of the blob. If present, it is used to check the decoded content of the “object” data point for integrity. The algorithm used for generating the hash value is SHA-2 [15]. The data point contains the hash as a hex encoded value.",
+          "description": "The hash code of the blob. If present, it is used to check the decoded content of the \"object\" data point for integrity. The algorithm used for generating the hash value is SHA-2 [15]. The data point contains the hash as a hex encoded value.",
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.opaquedata",
             "x-to-ocf": [
