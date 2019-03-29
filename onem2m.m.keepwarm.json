@@ -9,7 +9,7 @@
       "properties": {
         "time": {
           "type": "integer",
-          "description": "The desired duration of ‘keep water warm’ function. It indicates how long water shall be kept warm e.g. after the boiling in the case of a kettle. The value indicates a time expressed in minutes.",
+          "description": "The desired duration of 'keep water warm' function. It indicates how long water shall be kept warm e.g. after the boiling in the case of a kettle. The value indicates a time expressed in minutes.",
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.time.period",
             "x-to-ocf": [
